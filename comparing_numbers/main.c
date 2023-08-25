@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void main()
+int main()
 {
     float a,b,c,greatest;
     printf("Enter three numbers:-");
@@ -10,5 +10,6 @@ void main()
     else if (b>a && b>c){greatest = b;}
     else if (c>a && c>b){greatest = c;}
 
-    printf("The greatest number of %f %f %f is :- %f", a,b,c,greatest);
+    printf("The greatest number of %f, %f, %f is :- %f", a,b,c,greatest);
+    return 0;
 }
