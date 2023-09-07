@@ -3,17 +3,23 @@
 
 int main()
 {
-    int det,a,b,c;
-    float sol;
-    printf("Please eneter the coefficients of the quadratic eqn in order x^2,x and constant\n");
+    int a,b,c;
+    float sol,det;
+    char compl[100];
+    printf("Please eneter the coefficients of the quadratic eqn in order x^2,x and constant:- \n");
     scanf("%d\n%d\n%d", &a, &b, &c);
     det = (b*b) - (4*a*c);
     if(det < 0)
     {
-        printf("Equation has no real solution\n");
+        det = det*-1;
+        det = sqrt(det);
+        b = -1*b;
+        a = 2*a;
+        sprintf(compl, "(%d(+-)%.2fi)/%d",b,det,a);
+        printf("The soultions are :- %s",compl); 
         return 0;
     }
-    else if(det >= 0 )
+    else
     {
         if (det > 0)
         {
