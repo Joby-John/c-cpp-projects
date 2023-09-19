@@ -9,17 +9,17 @@ struct node{
 void main()
 {
     int i = 1;
-    struct node* head = NULL;
-    struct node* temp = NULL;
+    struct node* head = NULL;//points to adresses of the entire chunk not stupid next of any node
+    struct node* temp = NULL;//he also points to adress of entire chunk not to next of any node
     do 
     {
-      struct node* new = (struct node*) malloc (sizeof(struct node));//allocates memory and assigns address to new
+      struct node* new = (struct node*) malloc (sizeof(struct node));//allocates memory and assigns its address to new*, now new* has a chunk with 2 blocks value and next 
       printf("Enter the value to be stored:- ");
       scanf("%d",&new->value);//entered element goes to value of struct node
       new->next = NULL; //current nodes adress section is set to null bc its first element
       if (head == NULL)
       {
-        head = temp = new;//now the adress is in temp and head points to data
+        head = temp = new;//the adress of whole chunk which was first stored in *new is now passed to head and temp
       }
       else//the most convoluted part note:- new is also a pointer
       {
