@@ -45,7 +45,7 @@ void NQ()
     {
         printf("queue is full\n");//we doesnt add at that index just prints this message bc else value will get overwritten
     }
-    else//for all other cases that first case of an empty queue
+    else//for all other cases than first case of an empty queue and 2nd case of full queue
     {
         r = (r+1)%SIZE;
         printf("Enter the element to add:- ");
