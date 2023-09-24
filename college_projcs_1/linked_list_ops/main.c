@@ -102,13 +102,13 @@ void main()
             case (4):
                     on = 0;
                     temp = head;
-                    struct node* toclear;
+                    struct node* nexttoclear;
                     while(temp!=NULL)
                     {
-                        toclear = temp->next;
+                        printf("Clearing %d\n", temp->value);
+                        nexttoclear = temp->next;
                         free(temp);
-                        temp = toclear;
-                        printf("Clearing\n");
+                        temp = nexttoclear;
                     }
                     printf("Clearing memory complete");
                     break;            
