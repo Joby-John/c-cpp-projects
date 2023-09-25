@@ -36,6 +36,14 @@ void insert(struct node* addr)
     }
 
 }
+void begining(struct node* addr)
+{
+    temp = head;
+    head = addr;
+    printf("Enter the value you wantt to enter:- ");
+    scanf("%d",&head->value);
+    addr->next = temp;
+}
 
 void middle(struct node* addr)
 {
@@ -43,13 +51,11 @@ void middle(struct node* addr)
     temp = head;
     printf("After which element you want to enter data:- ");
     scanf("%d",&element);
-    while(temp->value!= element)
+
+    while(temp!= NULL && temp->value!= element)
     {
        temp = temp->next;
-       if (temp == NULL)
-       {
-        break;
-       }
+
     }
     if (temp != NULL)
     {
@@ -57,10 +63,11 @@ void middle(struct node* addr)
         temp->next = addr;
         printf("Enter the value to enter:- ");
         scanf("%d",&addr->value);
-    }
+    }    
     else{
         printf("NO SUCH ELEMENT FOUND!\n");
-    }    
+    }
+    
 }
 
 void display()
@@ -76,6 +83,56 @@ void display()
     printf("\n");
 }
 
+void delete() //need to do delete from begining without bug and set head = null on complete list deletion
+{
+    temp = head;
+    int element, found = 1;
+    struct node* previous;
+    printf("Enter the element which you want to delete:- ");
+    scanf("%d", &element);
+    while(temp->value!=element )
+    {
+        previous = temp;
+        temp = temp->next;
+        if (temp == NULL)
+        {
+            found = 0;
+            break;
+        }
+    }
+    if(found == 1)
+    {
+    previous->next = temp->next;
+    free(temp);
+    temp = NULL;
+    }
+    else{
+        printf("Entered element not found!\n");
+    }
+
+}
+
+void search()
+{
+    int element;
+    temp = head;
+    printf("Enter the item to search:-");
+    scanf("%d",&element);
+
+    while(temp!=NULL && temp->value!=element)
+    {
+        temp = temp->next;
+    }
+    if (temp == NULL)
+    {
+        printf("ELEMENT NOT FOUND\n");
+    }
+    else
+    {
+        printf("ELEMENT FOUND\n");
+    }
+}
+
 
 void main()
 {
@@ -84,7 +141,7 @@ void main()
 
     do
     {
-        printf("Enter your choice \n1-regular insert \n2-insert at choice\n3-to display\n4- To free memory and Quit \n:- ");
+        printf("Enter your choice \n1-regular insert \n2-insert at begining \n3-insert at choice\n4-to display\n5-To Delete specific value\n6-To search\n7- To free memory and Quit \n:- ");
         scanf("%d",&choice);
          
         struct node *new = (struct node*) malloc(sizeof(struct node));
@@ -93,13 +150,21 @@ void main()
                     insert(new);
                     break;
             case (2):
+                    begining(new);
+                    break;        
+            case (3):
                     middle(new);
                      break;
-            case (3):
+            case (4):
                     display();
                     break;
-            // delete at choice here        
-            case (4):
+            case (5):
+                    delete();
+                    break;
+            case(6):
+                    search();
+                    break;                
+            case (7):
                     on = 0;
                     temp = head;
                     struct node* nexttoclear;
