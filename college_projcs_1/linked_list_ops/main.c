@@ -87,7 +87,9 @@ void delete() //need to do delete from begining without bug and set head = null 
 {
     temp = head;
     int element, found = 1;
-    struct node* previous;
+    if (head!= NULL)
+    {
+    struct node* previous = head;
     printf("Enter the element which you want to delete:- ");
     scanf("%d", &element);
     while(temp->value!=element )
@@ -103,11 +105,23 @@ void delete() //need to do delete from begining without bug and set head = null 
     if(found == 1)
     {
     previous->next = temp->next;
+    if (temp!= head){
     free(temp);
     temp = NULL;
     }
+    else
+    {
+        head = temp->next;
+        free(temp);
+        temp = NULL;
+    }
+    }
     else{
         printf("Entered element not found!\n");
+    }
+    }
+    else{
+        printf("The list is empty!\n");
     }
 
 }
