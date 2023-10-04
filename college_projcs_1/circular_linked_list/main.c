@@ -110,6 +110,34 @@ void display()
     }
 }
 
+void delete_beg()
+{
+    if (head->next == head)
+    {
+        printf("Deleting:- %d\n", head->value);
+        free(head);
+        head = NULL;
+    }
+    else if (head!=NULL)
+    {
+    temp = head;
+    while(temp->next!=head)
+    {
+        temp = temp->next;
+    }
+    temp->next = head->next;
+    temp = head;
+    head = head->next;
+    printf("Deleting:- %d\n",temp->value);
+    free(temp);
+    temp = NULL;
+    }
+    else
+    {
+        printf("Linked list is empty\n");
+    }
+}
+
 void delete_all()
 {
     temp = head;
@@ -143,10 +171,12 @@ void main()
         case 2: insert_mid(new);
                 break;
         case 3: insert_end(new);
-                break;                
-        case 4: display();
                 break;
-        case 5: on = 0;
+        case 4: delete_beg();
+                break;                        
+        case 5: display();
+                break;
+        case 6: on = 0;
                 delete_all();
                 break;        
         default: printf("Invalid choice\n");
