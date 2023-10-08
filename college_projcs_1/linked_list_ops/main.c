@@ -73,6 +73,7 @@ void middle(struct node* addr)
 void display()
 {
     temp = head;
+    if (temp!=NULL){
     while (temp->next!= NULL)
     {
        printf("%d", temp->value);
@@ -81,6 +82,10 @@ void display()
     }
     printf("%d",temp->value);
     printf("\n");
+}
+else{
+    printf("You are trying to display empty List!\n ");
+}
 }
 
 void delete() //need to do delete from begining without bug and set head = null on complete list deletion
@@ -104,16 +109,25 @@ void delete() //need to do delete from begining without bug and set head = null 
     }
     if(found == 1)
     {
-    previous->next = temp->next;
     if (temp!= head){
+    previous->next = temp->next;
     free(temp);
     temp = NULL;
     }
     else
     {
+        if (temp->next == NULL)// this if resolved the deletion bug
+        {
+            free(head);
+            head = NULL;
+            temp = head;
+            //printf("%d", head);
+        }
+        else{
         head = temp->next;
         free(temp);
         temp = NULL;
+    }
     }
     }
     else{
@@ -174,6 +188,7 @@ void main()
                     break;
             case (5):
                     delete();
+                    //printf("Did well");
                     break;
             case(6):
                     search();
