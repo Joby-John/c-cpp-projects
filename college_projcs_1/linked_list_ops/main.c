@@ -116,7 +116,7 @@ void delete() //need to do delete from begining without bug and set head = null 
     }
     else
     {
-        if (temp->next == NULL)// this if resolved the deletion bug
+        if (temp->next == NULL)// this if statement resolved the deletion bug
         {
             free(head);
             head = NULL;
