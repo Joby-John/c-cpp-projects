@@ -1,0 +1,21 @@
+
+Customer Id: 1234
+Name: Joby John
+Age: 24
+GenderMale
+Mobile: 12345678
+Address: Adoor
+
+Customer Id: 1234
+Name: Joby John
+Age: 24
+GenderMale
+Mobile: 123456789
+Address: Adoor
+
+Customer Id: 123
+Name: Joby
+Age: 12
+GenderMale
+Mobile: 1233445
+Address: adoor
