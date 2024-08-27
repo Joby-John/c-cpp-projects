@@ -1,0 +1,9 @@
+
+
+		----------Bill Details----------
+		Customer ID: 516 
+		Cab Charges: 180 Rs
+		Hotel Charges: 0 Rs
+		--------------------------------
+		Total Amount: 180 Rs
+		--------------------------------

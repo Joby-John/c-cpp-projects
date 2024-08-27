@@ -19,3 +19,10 @@ Age: 12
 GenderMale
 Mobile: 1233445
 Address: adoor
+
+Customer Id: 123
+Name: Joby John
+Age: 24
+GenderMAle
+Mobile: 828989
+Address: Adoor

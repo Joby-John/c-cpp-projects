@@ -65,6 +65,7 @@ public:
             cout<<"File Opening Error"<<endl;
             return;
         }
+        system("CLS");
 
         string line;
         while(getline(in, line))
@@ -72,6 +73,10 @@ public:
             cout<<line<<endl;
         }
         in.close();
+
+        int exit = 0;
+        cout<<"Press any number to exit"<<endl;
+        cin>>exit;
 
     }
 };
@@ -256,6 +261,15 @@ public:
         outf << "\t\t--------------------------------" << endl;
         }
 
+        cout<<"Your receipt is stored in file you can get it from show receipt"<<endl;
+        cout<<"To Show receipt press 1: ";\
+        int show = 0;
+        cin>>show;
+        if(show)
+        {   
+            system("CLS");
+            showBill();
+        }
         outf.close();
     }
     void showBill()
@@ -267,13 +281,19 @@ public:
             return;
         }
 
+        system("ClS");
+
         string line;
         while(getline(bill, line))
         {
-            cout<<line;
+            cout<<line<<endl;
         }
 
         bill.close();
+        
+        int exit = 0;
+        cout<<"Enter 1 to exit"<<endl;
+        cin>>exit;
 
     }
 
@@ -288,12 +308,12 @@ void mainMenu() {
     while (true) {
         system("CLS"); // Clear the screen
         cout << "\n\n\t\t----------MAIN MENU----------" << endl;
-        cout << "\t\t1. Enter Customer Details" << endl;
-        cout << "\t\t2. Show Customer Details" << endl;
+        cout << "\t\t1. Enter New Customer Details" << endl;
+        cout << "\t\t2. Show Old Customer Details" << endl;
         cout << "\t\t3. Book a Cab" << endl;
         cout << "\t\t4. Book a Hotel" << endl;
-        cout << "\t\t5. Print Receipt" << endl;
-        cout << "\t\t6. Show Receipt" << endl;
+        cout << "\t\t5. Print Receipts" << endl;
+        cout << "\t\t6. Show Receipts" << endl;
         cout << "\t\t7. Exit" << endl;
         cout << "\n\t\tEnter your choice: ";
         cin >> choice;
@@ -329,8 +349,34 @@ void mainMenu() {
     }
 }
 
+class accessMenu
+{
+    protected:
+        string adminName = "Joby";
+    
+    public:
+        string name = "";
+        accessMenu()
+        {
+            cout<<"Enter you name to access Booking System : ";
+            getline(cin, name);
+
+            if(name == adminName)
+            {
+                system("CLS");
+                mainMenu();
+            }
+            else
+            {
+                cout<<"Wrong Credentials"<<endl;
+            }
+        }
+        ~accessMenu(){}
+};
+
 int main()
 {
-    mainMenu();
+    system("CLS");
+    accessMenu admin;
     return 0;
 }
