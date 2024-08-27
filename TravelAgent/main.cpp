@@ -358,6 +358,7 @@ class accessMenu
         string name = "";
         accessMenu()
         {
+            system("color 0A"); // to change color of command prompt
             cout<<"Enter you name to access Booking System : ";
             getline(cin, name);
 
