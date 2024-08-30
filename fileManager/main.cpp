@@ -4,6 +4,7 @@
 #include<string>
 #include<vector>
 #include<filesystem>
+#include<set>
 
 using namespace std;
 
@@ -15,17 +16,21 @@ public:
         string folderPath = "./"; // to acces current directory
 
         vector<string>files; // to store files list
+        set<string>ignore = {"./main.cpp", "./main.exe"};//files to ignore from listing, this can also be used to hide files
 
-        for(const auto& fileName: filesystem::directory_iterator(folderPath))
+        try
         {
-            files.push_back(fileName.path().string());
+            for(const auto& fileName: filesystem::directory_iterator(folderPath))
+            {
+                if(ignore.find(fileName.path().string()) == ignore.end())
+                    cout<<fileName<<endl;
+            }
         }
-
-        for(auto fileName:files)
+        catch(const filesystem::filesystem_error& e)
         {
-            if(fileName != "./main.cpp" && fileName != "./main.exe")
-                cout<<fileName<<endl;
+            cerr <<e.what() << '\n';
         }
+        
     }
 
     
