@@ -2,16 +2,33 @@
 #include<fstream>
 #include<windows.h>
 #include<string>
+#include<vector>
+#include<filesystem>
 
 using namespace std;
 
 class listFile
 {
 public:
-    void listFiles(const string& path)
+    void listFiles()
     {
+        string folderPath = "./"; // to acces current directory
 
+        vector<string>files; // to store files list
+
+        for(const auto& fileName: filesystem::directory_iterator(folderPath))
+        {
+            files.push_back(fileName.path().string());
+        }
+
+        for(auto fileName:files)
+        {
+            if(fileName != "./main.cpp" && fileName != "./main.exe")
+                cout<<fileName<<endl;
+        }
     }
+
+    
 };
 
 class Write
@@ -120,7 +137,10 @@ int main()
 {
     system("CLS");
     Write firstFile;
+    listFile listfile;
 
-    firstFile.create();
+    listfile.listFiles();
+
+    //firstFile.create();
     return 0;
 }
