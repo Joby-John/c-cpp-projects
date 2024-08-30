@@ -87,20 +87,24 @@ public:
 
 class Read
 {
+private:
+    string fileName;
     public:
         void read(const string& fName)
         {
-
+            fileName = fName;
         }
 
 };
 
 class Delete
 {
+private:
+    string fileName;
     public:
         void del(const string& fname)
         {
-
+            fileName = fname;
         }
 };
 
@@ -109,7 +113,7 @@ class vControl
 public:
     void init()
     {
-
+        
     }
 
     void status()
