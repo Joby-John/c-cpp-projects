@@ -19,6 +19,39 @@ class Write
 public:
     void create()
     {
+        string name = "";
+        cout<<"Enter the file name: ";
+        cin>>name;
+
+        ofstream newFile(name+".txt");
+
+        if(newFile.is_open())
+        {
+            cout<<"Enter the text here, to end entering on a new line type 'endI':- ";
+
+            while(true)
+            {
+                string line = "";
+                cin.clear();
+                getline(cin, line);
+
+                if(line == "endI")
+                {
+                    break;
+                }
+                else
+                {
+                    newFile<<line;
+                    newFile<<"\n";
+                }
+            }
+        }
+        else
+        {
+            cout<<"err opening file"<<endl;
+        }
+
+        newFile.close();    
 
     }
 
@@ -85,5 +118,9 @@ class vControl
 
 int main()
 {
+    system("CLS");
+    Write firstFile;
+
+    firstFile.create();
     return 0;
 }
